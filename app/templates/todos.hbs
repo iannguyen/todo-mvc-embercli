@@ -2,7 +2,7 @@
      action="createTodo" }}
 
 <section id="main">
-  {{#todo-list todos=model}}
+  {{#todo-list todos=model deleteTodo="deleteTodo"}}
     {{outlet}}
   {{/todo-list}}
   <input type="checkbox" id="toggle-all">
