@@ -1,5 +1,5 @@
 export default function() {
-  this.get('/todos', function(db, request) {
+  this.get('/todos', function(db) {
     return {
       data: db.todos.map(attrs => ({
         type: 'todos',
@@ -31,13 +31,11 @@ export default function() {
     };
   });
   this.del('/todos/:id', function(db, request) {
-    let id = request.params.id;
-    db.todos.remove(id);
     return {
       data: {
         type: "todos",
-        id: id,
-        attributes: {}
+        id: request.params.id,
+        attributes: null
       }
     };
   });

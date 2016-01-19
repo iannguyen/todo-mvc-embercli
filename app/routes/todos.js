@@ -15,7 +15,7 @@ export default Ember.Route.extend({
         todo.save();
       },
       deleteTodo(todo) {
-        return todo.destroyRecord();
+        todo.destroyRecord();
       }
     }
 });
