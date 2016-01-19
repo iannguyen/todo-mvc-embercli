@@ -30,7 +30,17 @@ export default function() {
       }
     };
   });
-  this.del('/todos/:id');
+  this.del('/todos/:id', function(db, request) {
+    let id = request.params.id;
+    db.todos.remove(id);
+    return {
+      data: {
+        type: "todos",
+        id: id,
+        attributes: {}
+      }
+    };
+  });
 }
 
 

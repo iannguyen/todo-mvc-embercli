@@ -4,14 +4,17 @@
     checked=todo.complete }}
 
 {{#if editing}}
-  <input class="edit">
+  {{ input
+      class="edit"
+      value=todo.title
+      action="submitTodo" }}
 {{ else }}
   <label
     class="{{if todo.complete 'completed'}}"
-    {{action "editTodo" on="doubleClick"}}>
-      {{todo.title}}</label>
+    {{action "editTodo" on="doubleClick"}}>{{todo.title}}</label>
 {{/if}}
 
-<button class="destroy"></button>
+<button
+  class="destroy" {{action "deleteTodo"}}></button>
 
 {{yield}}
