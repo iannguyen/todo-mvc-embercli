@@ -1,8 +1,9 @@
-{{todo-input action="createTodo"}}
+{{ todo-input
+     action="createTodo" }}
 
 <section id="main">
-    {{#todo-list todos=model}}
-      {{outlet}}
-    {{/todo-list}}
-    <input type="checkbox" id="toggle-all">
+  {{#todo-list todos=model}}
+    {{outlet}}
+  {{/todo-list}}
+  <input type="checkbox" id="toggle-all">
 </section>

@@ -1,8 +1,13 @@
-<input type="checkbox"
-       class="toggle"
-       checked="{{if todo.complete 'checked'}}">
+{{ input
+    type="checkbox"
+    class="toggle"
+    checked=todo.complete }}
 
-<label class="{{if todo.complete 'completed'}}">{{todo.title}}</label>
+<label
+  class="{{if todo.complete 'completed'}}"
+  {{action "editTodo" on="doubleClick"}}>
+    {{todo.title}}
+</label>
 
 <button class="destroy"></button>
 
