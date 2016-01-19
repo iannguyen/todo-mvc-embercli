@@ -3,11 +3,14 @@
     class="toggle"
     checked=todo.complete }}
 
-<label
-  class="{{if todo.complete 'completed'}}"
-  {{action "editTodo" on="doubleClick"}}>
-    {{todo.title}}
-</label>
+{{#if editing}}
+  <input class="edit">
+{{ else }}
+  <label
+    class="{{if todo.complete 'completed'}}"
+    {{action "editTodo" on="doubleClick"}}>
+      {{todo.title}}</label>
+{{/if}}
 
 <button class="destroy"></button>
 
