@@ -1,6 +1,23 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  didInsertElement() {
+    // similar to componentDidMount, called everytime render/re-render
+    let todos = this.get('todos');
+    if (todos.get('length') > 0 && todos.isEvery('complete', true)) {
+      this.set('allAreDone', true);
+    } else {
+      this.set('allAreDone', false);
+    }
+  },
+  allAreDoneObserver: Ember.observer('allAreDone', function() {
+    let completeValue = this.get('allAreDone');
+    let todos = this.get('todos');
+    todos.forEach((todo) => {
+      todo.set('complete', completeValue);
+      this.sendAction('updateTodo', todo);
+    });
+  }),
   remaining: Ember.computed('todos.@each.complete', function() {
     let todos = this.get('todos');
     return todos.filterBy('complete', false).get('length');
